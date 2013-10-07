@@ -84,7 +84,7 @@ http.onrequest(function (req, resp) {
         else {
             local json = "{ \"status\" : { \"auth\" : \"no\" }}";
             resp.send(401, json);
-            send_sms(TWILIO_TO_NUMBER, "Unauthorized access to Security System attempted.");
+            send_sms(TWILIO_TO_NUMBER, "Unauthorized access to imp attempted.");
         }
      
     }
