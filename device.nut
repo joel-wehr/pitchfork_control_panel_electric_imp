@@ -1,6 +1,31 @@
+agent.on("button1", function(a) {
+    local data = "";
+    if (a == "") {
+        server.log("button 1");
+        // Do something at the device
+        data = "Button 1 pressed.";
+    }
+    agent.send("button1", data)
+    });
+agent.on("button2", function(a) {
+    local data = "";
+    if (a == "") {
+        // Do something at the device
+        data = "Button 2 pressed";
+    }
+    agent.send("button2", data)
+    });
+agent.on("button3", function(a) {
+    local data = "";
+    if (a == "") {
+        // Do something at the device
+        data = "Button 3 pressed.";
+    }
+    agent.send("button3", data)
+    });
 agent.on("button4", function(a) {
     local data = "";
-    if (a == "4") {
+    if (a == "") {
         // Do something at the device
         data = "Button 4 pressed.";
     }
@@ -39,5 +64,10 @@ agent.on("slider2", function(a) {
     local data = ("Slider 2: " + a);
     agent.send("slider2", data)
     });
+
+hardware.pin1.configure(DIGITAL_OUT);
+hardware.pin2.configure(DIGITAL_OUT);
+hardware.pin5.configure(DIGITAL_OUT);
+hardware.pin7.configure(DIGITAL_OUT);
+hardware.pin9.configure(DIGITAL_OUT);
 imp.configure("Pitchfork Testing", [], []);
-server.log("Pitchfork Testing");
