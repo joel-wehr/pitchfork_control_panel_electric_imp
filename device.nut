@@ -1,7 +1,7 @@
 agent.on("button1", function(a) {
     local data = "";
     if (a == "") {                             //Check if any data was sent with the button press
-        server.log("Button 1 press recieved."); //Log that the device received the request
+        server.log("Button 1 press received."); //Log that the device received the request
                                                // Do something at the device 
         data = "Button 1 pressed.";      // This string will be sent back to Pitchfork and displayed
     }
@@ -10,7 +10,7 @@ agent.on("button1", function(a) {
 agent.on("button2", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 2 press recieved.");
+        server.log("Button 2 press received.");
         data = "Button 2 pressed.";
     }
     agent.send("button2", data)
@@ -18,7 +18,7 @@ agent.on("button2", function(a) {
 agent.on("button3", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 3 press recieved.");
+        server.log("Button 3 press received.");
         data = "Button 3 pressed.";
     }
     agent.send("button3", data)
@@ -26,7 +26,7 @@ agent.on("button3", function(a) {
 agent.on("button4", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 4 press recieved.");
+        server.log("Button 4 press received.");
         data = "Button 4 pressed.";
     }
     agent.send("button4", data)
@@ -34,7 +34,7 @@ agent.on("button4", function(a) {
 agent.on("button5", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 5 press recieved.");
+        server.log("Button 5 press received.");
         data = "Button 5 pressed.";
     }
     agent.send("button5", data)
@@ -42,7 +42,7 @@ agent.on("button5", function(a) {
 agent.on("button6", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 6 press recieved.");
+        server.log("Button 6 press received.");
         data = "Button 6 pressed.";
     }
     agent.send("button6", data)
@@ -50,7 +50,7 @@ agent.on("button6", function(a) {
 agent.on("button7", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 7 press recieved.");
+        server.log("Button 7 press received.");
         data = "Button 7 pressed.";
     }
     agent.send("button7", data)
@@ -58,7 +58,7 @@ agent.on("button7", function(a) {
 agent.on("button8", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 8 press recieved.");
+        server.log("Button 8 press received.");
         data = "Button 8 pressed.";
     }
     agent.send("button8", data)
@@ -66,7 +66,7 @@ agent.on("button8", function(a) {
 agent.on("button9", function(a) {
     local data = "";
     if (a == "") {
-        server.log("Button 9 press recieved.");
+        server.log("Button 9 press received.");
         data = "Button 9 pressed.";
     }
     agent.send("button9", data)
