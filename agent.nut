@@ -1,31 +1,13 @@
-//*************************TWILIO***********************************************
-const TWILIO_ACCOUNT_SID = ""   //Your SID
-const TWILIO_AUTH_TOKEN = ""    //Your TOKEN
-const TWILIO_FROM_NUMBER = "+17175551212" // your phone no goes here
-const TWILIO_TO_NUMBER = "+17175551212" // destination phone no
-
-function send_sms(number, message) {
-    local twilio_url = format("https://api.twilio.com/2010-04-01/Accounts/%s/SMS/Messages.json", TWILIO_ACCOUNT_SID);
-    local auth = "Basic " + http.base64encode(TWILIO_ACCOUNT_SID+":"+TWILIO_AUTH_TOKEN);
-    local body = http.urlencode({From=TWILIO_FROM_NUMBER, To=number, Body=message});
-    local req = http.post(twilio_url, {Authorization=auth}, body);
-    local res = req.sendsync();
-    if(res.statuscode != 201) {
-        server.log("error sending message: "+res.body);
-    }
-}
-//*****************************END TWILIO***************************************
-apiKey <- ""  //Your big, huge, long, secure API Key
-
+// HTTP request handler - This code is blocking - requests processed in order
+const API_KEY = "";  //Make up a secure code, and enter it here and in the app
 http.onrequest(function (req, resp) {
     try {
-        local data = http.jsondecode(req.body);
-        server.log("Received: " + req.body);
-        if ("api-key" in req.headers && req.headers["api-key"] == apiKey) {
-            server.log(req.headers["api-key"]);
-        
-            if ("button1" in data) {
-                device.send("button1", data.button1);
+        local data = http.jsondecode(req.body);                             //Decode the request body to JSON
+        server.log("Received: " + req.body);                                //Log the request body undecoded
+        if ("api-key" in req.headers && req.headers["api-key"] == API_KEY) {
+            server.log(req.headers["api-key"]);                             //Log the recieved API-Key
+            if ("button1" in data) {                                        //Start checking the JSON for Keys
+                device.send("button1", data.button1);                       
                 device.on("button1", function(d) {
                     local json = "{ \"status\" : { \"button1\" : \"" + d + "\" }}";
                     resp.send(200,json);
@@ -49,6 +31,41 @@ http.onrequest(function (req, resp) {
                 device.send("button4", data.button4);
                 device.on("button4", function(d) {
                     local json = "{ \"status\" : { \"button4\" : \"" + d + "\" }}";
+                    resp.send(200,json);
+                });
+            }
+            else if ("button5" in data) {
+                device.send("button5", data.button5);
+                device.on("button5", function(d) {
+                    local json = "{ \"status\" : { \"button5\" : \"" + d + "\" }}";
+                    resp.send(200,json);
+                });
+            }
+            else if ("button6" in data) {
+                device.send("button6", data.button6);
+                device.on("button6", function(d) {
+                    local json = "{ \"status\" : { \"button6\" : \"" + d + "\" }}";
+                    resp.send(200,json);
+                });
+            }
+            else if ("button7" in data) {
+                device.send("button7", data.button7);
+                device.on("button7", function(d) {
+                    local json = "{ \"status\" : { \"button7\" : \"" + d + "\" }}";
+                    resp.send(200,json);
+                });
+            }
+            else if ("button8" in data) {
+                device.send("button8", data.button8);
+                device.on("button8", function(d) {
+                    local json = "{ \"status\" : { \"button8\" : \"" + d + "\" }}";
+                    resp.send(200,json);
+                });
+            }
+            else if ("button9" in data) {
+                device.send("button9", data.button9);
+                device.on("button9", function(d) {
+                    local json = "{ \"status\" : { \"button9\" : \"" + d + "\" }}";
                     resp.send(200,json);
                 });
             }
@@ -84,11 +101,9 @@ http.onrequest(function (req, resp) {
         else {
             local json = "{ \"status\" : { \"auth\" : \"no\" }}";
             resp.send(401, json);
-            send_sms(TWILIO_TO_NUMBER, "Unauthorized access to imp attempted.");
         }
-     
     }
     catch (ex) {
     resp.send(500, "Internal Server Error: " + ex);
   }
-});
+});    
