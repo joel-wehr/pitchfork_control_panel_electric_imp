@@ -112,4 +112,3 @@ agent.on("slider2", function(a) {
 //hardware.pin7.configure(DIGITAL_OUT);
 //hardware.pin8.configure(DIGITAL_OUT);
 //hardware.pin9.configure(DIGITAL_OUT);
-imp.configure("Pitchfork Control Panel", [], []);
